@@ -4,66 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            text-align: center;
-            padding: 50px;
-        }
-        .invitation {
-            background-color: #fff;
-            padding: 20px;
-            margin: 0 auto;
-            max-width: 600px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .greeting {
-            font-size: 24px;
-            color: #333;
-        }
-        .names {
-            font-size: 30px;
-            color: #555;
-            margin: 20px 0;
-        }
-        .wedding-details {
-            font-size: 18px;
-            color: #777;
-        }
-        .wedding-picture {
-            margin: 20px 0;
-        }
-        .wedding-picture img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
-        .info {
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="invitation">
-        <div class="greeting">
-            You're Invited!
-        </div>
-        <div class="names">
-            Trần Danh Lâm & Trần Lan Anh
-        </div>
-        <div class="wedding-picture">
-            <img src="pics/bank_qr.jpg" alt="Wedding Picture">
-        </div>
-        <div class="wedding-details">
-            <p>Date: Sep 22, 2024</p>
-            <p>Time: 9:00 AM</p>
-            <p>Venue: Lệ Xá, Tiên Lữ, Hưng Yên</p>
-        </div>
-        <div class="info">
-            <p>We would be delighted to have you join us on our special day.</p>
-            <p>Please RSVP by June 10, 2024.</p>
+    <div class="invitation-container">
+        <div class="invitation-card">
+            <div class="invitation-header">
+                <div class="invitation-header-text">
+                    <h1 class="bride-groom">Alice & Bob</h1>
+                    <p class="wedding-date">June 20, 2024</p>
+                    <p class="location">Beachside Resort, Malibu, CA</p>
+                </div>
+            </div>
+            <div class="invitation-body">
+                <p class="invitation-message">You are cordially invited to celebrate our wedding!</p>
+                <button class="rsvp-button">RSVP Now</button>
+            </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

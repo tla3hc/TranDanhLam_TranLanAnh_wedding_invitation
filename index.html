@@ -3462,8 +3462,7 @@
 
                     
                                         <div class="btn-reciver-rsvp mt-40">
-                        <!-- <button class="gf_button gf_button1 gf_buttonrsvp" type="submit" id="guest_data_input_submit">Gửi Phản Hồi</button> -->
-                        <button type="submit" id="guest_data_input_submit">Gửi Phản Hồi</button>
+                        <button class="gf_button gf_button1 gf_buttonrsvp" type="submit" id="guest_data_input_submit">Gửi Phản Hồi</button>
                     </div>
                                 </div>
         </div>
@@ -3743,55 +3742,71 @@
 
 <script>
     document.getElementById('guest_data_input_submit').addEventListener('click', async function(e) {
-      e.preventDefault();
+        e.preventDefault();
 
+        document.getElementById('guest_data_input_submit').disabled = true;
+        document.getElementById('guest_data_input_submit').style.backgroundColor = '#c2c2c2';
+
+        const guest_can_join                    = document.getElementById('option-1boxp').checked
+        
         const guest_data_input_bride            = document.getElementById('option-1').checked;
         const guest_data_input_groom            = document.getElementById('option-2').checked;
 
-        let guest_classification = "";
-        if (guest_data_input_bride == true) {
-            guest_classification = 'Nhà Gái';
-        } else {
-            guest_classification = 'Nhà Trai';
-        }
-
         const guest_data_input_guest_number     = document.getElementById('guest_data_input_guest_number').value;
         const guest_data_input_name             = document.getElementById('guest_data_input_name').value;
-        const guest_data_input_phone_number     = document.getElementById('guest_data_input_phone_number').value;  
+        const guest_data_input_phone_number     = document.getElementById('guest_data_input_phone_number').value;
+        const guest_data_input_note             = document.getElementById('guest_data_input_note').value;  
+
+        if (!guest_can_join) {
+            if (!guest_data_input_name) {
+                alert('Vui lòng nhập tên của bạn');
+                document.getElementById('guest_data_input_submit').disabled = false;
+                document.getElementById('guest_data_input_submit').style.backgroundColor = '#6d6e6e';
+                return;
+            } 
+        }
 
         let guest_data_input_transportation   = document.getElementById('id_field_pt').value;
         if(guest_data_input_transportation == 1){
             guest_data_input_transportation = 'Tự túc';
         }else{
             guest_data_input_transportation = 'Đi chung';
+            if (guest_data_input_phone_number == '' && guest_can_join == true) {
+                alert('Vui lòng nhập số điện thoại để chúng tôi liên hệ xác nhận thông tin');
+                document.getElementById('guest_data_input_submit').disabled = false;
+                document.getElementById('guest_data_input_submit').style.backgroundColor = '#6d6e6e';
+                return;
+            }
         }
-        const guest_data_input_note             = document.getElementById('guest_data_input_note').value;
 
+        const data = {
+            guest_can_join         : guest_can_join,
+            guest_classification   : guest_data_input_groom,        
+            guest_number           : guest_data_input_guest_number,      
+            guest_name             : guest_data_input_name,              
+            guest_phone_number     : guest_data_input_phone_number,      
+            guest_transportation   : guest_data_input_transportation,    
+            guest_note             : guest_data_input_note, 
+        };
 
-      const data = {
-        guest_classification   : guest_classification,        
-        guest_number           : guest_data_input_guest_number,      
-        guest_name             : guest_data_input_name,              
-        guest_phone_number     : guest_data_input_phone_number,      
-        guest_transportation   : guest_data_input_transportation,    
-        guest_note             : guest_data_input_note, 
-      };
+        try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycby-HFZg0BgsYntOSPMQSTbg0XGloXcehz1ZxmWILwQYc8TiNNKsF6Wz8WMLUk8P3tzs/exec', {
+                method: 'POST',
+                body: JSON.stringify(data)
+            });
 
-
-      try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbyr3g_6qh45ceCm8BmNWqeypoICpvG1kfmuQY3Fx4u_rZtjyzvFN-h6OzoCA5DedaCQ/exec', {
-          method: 'POST',
-          body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-        if (result.result === 'success') {
-          alert('Submission successful!');
-        } else {
-          alert('Submission failed.');
+            const result = await response.json();
+            if (result.result === 'success') {
+                alert('Submission successful!');
+            } else {
+                alert('Submission failed.');
+                document.getElementById('guest_data_input_submit').disabled = false;
+                document.getElementById('guest_data_input_submit').style.backgroundColor = '#6d6e6e';
+            }
+        } catch (error) {
+            alert('Submission failed.');
+            document.getElementById('guest_data_input_submit').disabled = false;
+            document.getElementById('guest_data_input_submit').style.backgroundColor = '#6d6e6e';
         }
-      } catch (error) {
-        alert('Submission failed.');
-      }
     });
   </script>

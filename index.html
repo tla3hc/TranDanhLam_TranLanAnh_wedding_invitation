@@ -3000,7 +3000,7 @@
                                     
 
                                     <div class="mt-d-1">
-                                        <img src="pics/bg-shtheme.png">
+                                        <img src="images/bg-shtheme.png">
                                     </div>
 
                                 </div>
@@ -3797,21 +3797,21 @@
         };
 
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycby-HFZg0BgsYntOSPMQSTbg0XGloXcehz1ZxmWILwQYc8TiNNKsF6Wz8WMLUk8P3tzs/exec', {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbw3fga-JvE8-EhfkMtegd6Mg9nY8H1h-XT68EztkcnFKIBnlZqd48HM3rSKtzjWtOo/exec', {
                 method: 'POST',
                 body: JSON.stringify(data)
             });
 
             const result = await response.json();
             if (result.result === 'success') {
-                alert('Submission successful!');
+                alert('Xin cảm ơn phản hồi của bạn!');
             } else {
-                alert('Submission failed.');
+                alert('Phản hồi lỗi :(');
                 document.getElementById('guest_data_input_submit').disabled = false;
                 document.getElementById('guest_data_input_submit').style.backgroundColor = '#6d6e6e';
             }
         } catch (error) {
-            alert('Submission failed.');
+            alert('Phản hồi lỗi :(');
             document.getElementById('guest_data_input_submit').disabled = false;
             document.getElementById('guest_data_input_submit').style.backgroundColor = '#6d6e6e';
         }

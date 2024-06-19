@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
     <link rel="shortcut icon" href="//cdn.shopify.com/s/files/1/0555/4346/4105/files/LOGOsimple-03-01_32x32.png?v=1617001406" type="image/png">
-    <title>Danh Lâm &amp; Lan Anh - Wedding Invitation - The Simple</title>
+    <title>Danh Lâm &amp; Lan Anh - Wedding Invitation</title>
     <meta name="description" content="Thiệp cưới Online của Chú rể Danh Lâm và Cô dâu Lan Anh." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property="og:site_name" content="Thiệp cưới The Simple">
+    <meta property="og:site_name" content="Thiệp cưới">
     <meta property="og:url" content="https://trandanhlam-tranlananh-wedding-invitation.pages.dev/">
-    <meta property="og:title" content="Danh Lâm &amp; Lan Anh - Wedding Invitation - The Simple">
+    <meta property="og:title" content="Danh Lâm &amp; Lan Anh - Wedding Invitation">
     <meta property="og:type" content="website">
     <meta property="og:description" content="Thiệp cưới Online của Chú rể Danh Lâm và Cô dâu Lan Anh.">
     <meta property="og:image" content="https://app.thesimple.vn/uploads/contact/642a4c3bcde6f-blob">
@@ -19,7 +19,7 @@
     
     <meta name="twitter:site" content="@thesimple.vn">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Danh Lâm &amp; Lan Anh - Wedding Invitation - The Simple">
+    <meta name="twitter:title" content="Danh Lâm &amp; Lan Anh - Wedding Invitation">
     <meta name="twitter:description" content="Thiệp cưới Online của Chú rể Danh Lâm và Cô dâu Lan Anh.">
     <meta name="csrf-token" content="NzijG3ypE1bzjq2dxnK5RxZW6hfFrWB1Brwd54QA">
     
@@ -2975,7 +2975,6 @@
                                                 <div class="tapebt">
                                                     <img src="https://app.thesimple.vn/template-thiep/thiep-cuoi-1/images/tape2.png">
                                                 </div>
-
                                             </div>
 
                                         </div>
@@ -3754,7 +3753,7 @@
 
         var guest_data_input_guest_number     = document.getElementById('guest_data_input_guest_number').value;
         const guest_data_input_name             = document.getElementById('guest_data_input_name').value;
-        const guest_data_input_phone_number     = document.getElementById('guest_data_input_phone_number').value;
+        var guest_data_input_phone_number     = document.getElementById('guest_data_input_phone_number').value;
         const guest_data_input_note             = document.getElementById('guest_data_input_note').value;  
 
 
@@ -3771,9 +3770,12 @@
             }
         }
 
+        guest_data_input_phone_number = `'${guest_data_input_phone_number}`;
+
         if (!guest_can_join) {
             guest_data_input_transportation = "";
             guest_data_input_guest_number = "";
+            guest_data_input_phone_number = "";
         }
 
         if (!guest_data_input_name) {

@@ -3528,7 +3528,7 @@
         
                     <div class="mt-80 ">
 
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3138.391787727476!2d106.16173453677415!3d20.70218918748052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313595537c2b398b%3A0x9aa576e6696910f9!2zQsOqIFTDtG5nIFRyYW5nIFRyw60gxJDDumMgU-G6tW4gVHLhuqduIFbEg24gQ2h1ecOqbi4!5e0!3m2!1sen!2sin!4v1718788530492!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3138.391787727476!2d106.16173453677415!3d20.70218918748052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313595537c2b398b%3A0x9aa576e6696910f9!2zQsOqIFTDtG5nIFRyYW5nIFRyw60gxJDDumMgU-G6tW4gVHLhuqduIFbEg24gQ2h1ecOqbi4!5e0!3m2!1sen!2sin!4v1718788530492!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         
 
@@ -3752,19 +3752,11 @@
         const guest_data_input_bride            = document.getElementById('option-1').checked;
         const guest_data_input_groom            = document.getElementById('option-2').checked;
 
-        const guest_data_input_guest_number     = document.getElementById('guest_data_input_guest_number').value;
+        var guest_data_input_guest_number     = document.getElementById('guest_data_input_guest_number').value;
         const guest_data_input_name             = document.getElementById('guest_data_input_name').value;
         const guest_data_input_phone_number     = document.getElementById('guest_data_input_phone_number').value;
         const guest_data_input_note             = document.getElementById('guest_data_input_note').value;  
 
-        if (!guest_can_join) {
-            if (!guest_data_input_name) {
-                alert('Vui lòng nhập tên của bạn');
-                document.getElementById('guest_data_input_submit').disabled = false;
-                document.getElementById('guest_data_input_submit').style.backgroundColor = '#6d6e6e';
-                return;
-            } 
-        }
 
         let guest_data_input_transportation   = document.getElementById('id_field_pt').value;
         if(guest_data_input_transportation == 1){
@@ -3778,6 +3770,18 @@
                 return;
             }
         }
+
+        if (!guest_can_join) {
+            guest_data_input_transportation = "";
+            guest_data_input_guest_number = "";
+        }
+
+        if (!guest_data_input_name) {
+            alert('Vui lòng nhập tên của bạn');
+            document.getElementById('guest_data_input_submit').disabled = false;
+            document.getElementById('guest_data_input_submit').style.backgroundColor = '#6d6e6e';
+            return;
+        } 
 
         const data = {
             guest_can_join         : guest_can_join,

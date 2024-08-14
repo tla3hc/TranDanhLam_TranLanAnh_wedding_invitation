@@ -664,7 +664,8 @@ $(document).on('change','#id_field_pt',function() {
 
 let audio = document.getElementById("audio");
 $(document).ready(function(){
-    console.log(audio);
+    let audio = document.getElementById("audio");
+    // console.log(audio);
     if(audio){
         audio.play().then(()=>audio.pause());
         // // now we can do whatever we want at any time with this MediaElement

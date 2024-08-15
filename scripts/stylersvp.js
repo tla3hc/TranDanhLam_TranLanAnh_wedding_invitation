@@ -669,7 +669,7 @@ $(document).ready(function(){
     if(audio){
         audio.play().then(()=>audio.pause());
         // // now we can do whatever we want at any time with this MediaElement
-        setTimeout(()=> audio.play(), 3000);
+        setTimeout(()=> audio.play(), 30000);
     }
 });
 $(".btn-play-audio").on('click',function(){

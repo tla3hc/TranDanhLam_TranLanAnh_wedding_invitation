@@ -66,6 +66,27 @@
         .gif-once {
             image-rendering: -webkit-optimize-contrast; /* Ensures better quality */
         }
+         /* Style for the loading screen */
+         #loading-screen {
+            position: absolute;
+            fill: transparent;
+            stroke-width: 11;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background-color: #fff8ed;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            transform: translate(-50%, -50%);
+            display: inline-block;
+        }
+
+        /* Hide the loading screen after page is loaded */
+        body.loaded #loading-screen {
+            display: none;
+        }
     </style>
 
     <link rel="stylesheet" type="text/css" href="styles/sweetalert.css">
@@ -74,6 +95,11 @@
 <body>
     <div id="main-page" text_alert_rsvp="Xin cảm ơn phản hồi của bạn!" alert_pls_name="Vui lòng nhập Tên!" send_text_alert_rsvp="Gửi lời nhắn hoặc lời chúc" btn_send_mb="Gửi đi">
     <div class="box-tsimple-online">
+
+        <div id="loading-screen">
+            <img src="./images/loading.gif" alt="Loading...">
+        </div>
+
         <div class="cover">
             <img src="./images/intro.gif">
         </div>
@@ -3118,7 +3144,7 @@
 
                                 </div>
                             </div>
-                                                     </div>
+                            </div>
                     </div>
                 </div>
 
@@ -3752,3 +3778,10 @@
         }
     });
   </script>
+
+<script>
+    // Hide the loading screen when the page is fully loaded
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
+</script>
